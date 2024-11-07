@@ -50,6 +50,7 @@ namespace ScheduleDemo_1735
             // 定義Job，使用 JobBuilder 建立作業
             IJobDetail job1 = JobBuilder.Create<PrintPerSeconds>()
                 .WithIdentity("job1", "group1")  // 指定識別符，由名稱（job1）和組別（group1）組成
+                
                 .Build();
 
             // 定義Trigger，使用TriggerBuilder建立作業
@@ -83,25 +84,6 @@ namespace ScheduleDemo_1735
             #endregion
         }
     }
-
-    // 打印訊息的 Job 類別
-    public class PrintPerSeconds : IJob
-    {
-        public Task Execute(IJobExecutionContext context)
-        {
-            Console.WriteLine($"{DateTime.Now}: 記錄打印。");
-            return Task.CompletedTask;
-        }
-    }
-    public class PrintPerTime : IJob
-    {
-        public Task Execute(IJobExecutionContext context)
-        {
-            Console.WriteLine($"{DateTime.Now}：紀錄指定時間打印。");
-            return Task.CompletedTask;
-        }
-    }
-
 }
 
 
